@@ -45,7 +45,8 @@ def iniciar_servidor():
     global parar_sniff
     parar_sniff = False
     
-    sniff(filter="icmp and icmp[icmptype] == icmp-echo", 
+    sniff(iface="lo",
+	filter="icmp and icmp[icmptype] == icmp-echo", 
           prn=processar_pacote, 
           stop_filter=lambda x: parar_sniff,
           store=0)
